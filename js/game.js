@@ -3441,22 +3441,19 @@ document.addEventListener("DOMContentLoaded", function(){
   if(_zoomLevel < 50) _zoomLevel = 50;
   if(_zoomLevel > 110) _zoomLevel = 110;
 
-      function applyZoom(){
+  function applyZoom(){
     const scale = _zoomLevel / 100;
     const gs = document.getElementById('gameScreen');
     if(!gs) return;
-
+    /* 用内联样式直接控制，优先级最高 */
+    gs.style.zoom = String(scale);
     if(scale === 1){
-      /* 还原 */
-      gs.style.removeProperty('--zoom-scale');
-      gs.style.removeProperty('--zoom-w');
-      gs.style.removeProperty('--zoom-h');
+      gs.style.width = '';
+      gs.style.height = '';
       document.body.classList.remove('zoom-active');
     } else {
-      /* 缩小：容器尺寸 = 视口 / scale，配合 zoom = scale，整体视觉等比 */
-      gs.style.setProperty('--zoom-scale', scale);
-      gs.style.setProperty('--zoom-w', (100 / scale) + 'vw');
-      gs.style.setProperty('--zoom-h', (100 / scale) + 'vh');
+      gs.style.width = (100 / scale) + 'vw';
+      gs.style.height = (100 / scale) + 'dvh';
       document.body.classList.add('zoom-active');
     }
     try { localStorage.setItem('neon_holdem_zoom', String(_zoomLevel)); } catch(e){}
