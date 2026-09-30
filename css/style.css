@@ -1,6 +1,6 @@
 /* ====================================================================
    Tapeout Bracelet · Texas Hold'em
-   style.css — 精简整理版
+   style.css — 最终整理版
    ==================================================================== */
 
 :root{
@@ -193,7 +193,6 @@ button{ font-family:inherit; cursor:pointer; }
 .mini-btn.ghost:hover{ color:var(--text); border-color:var(--text-2); }
 .mini-btn.gold{ background:var(--gold); color:#000; }
 
-/* 牌桌卡片 */
 .table-grid{
   display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
   gap:16px; margin-bottom:24px;
@@ -464,7 +463,6 @@ button{ font-family:inherit; cursor:pointer; }
 .btn-zoom:hover{ background:rgba(251,191,36,.15); }
 .btn-zoom:active{ transform:scale(.94); }
 
-/* 桌面三栏 */
 .game-layout{
   display:grid; grid-template-columns:240px minmax(0,1fr) 340px;
   gap:14px; padding:14px; max-width:1700px; margin:0 auto; align-items:start;
@@ -487,7 +485,6 @@ button{ font-family:inherit; cursor:pointer; }
 .hand-info .row{ display:flex; justify-content:space-between; }
 .hand-info .row strong{ color:var(--text); font-weight:600; }
 
-/* 牌桌 */
 .table-area{ position:relative; padding-top:48px; }
 .dealer-seat{
   position:absolute; top:0; left:50%; transform:translateX(-50%);
@@ -549,7 +546,6 @@ button{ font-family:inherit; cursor:pointer; }
 @keyframes sh2{0%,100%{transform:translate(0,0);}50%{transform:translate(0,-10px);}}
 @keyframes sh3{0%,100%{transform:translate(0,0);}25%{transform:translate(14px,6px) rotate(12deg);}75%{transform:translate(-14px,-6px) rotate(-12deg);}}
 
-/* 座位 */
 .seats-layer{ position:absolute; inset:0; pointer-events:none; overflow:visible; }
 .seat{
   position:absolute; transform:translate(-50%,-50%);
@@ -657,7 +653,6 @@ button{ font-family:inherit; cursor:pointer; }
   border:1px solid rgba(148,163,184,.35);
 }
 
-/* 主动秀牌：蓝色高亮 */
 .seat.intent-reveal{
   opacity:1 !important;
   filter:none !important;
@@ -704,7 +699,6 @@ button{ font-family:inherit; cursor:pointer; }
   box-shadow:0 4px 12px rgba(0,0,0,.6);
 }
 
-/* 右栏 */
 .side-right{
   display:flex; flex-direction:column; gap:10px; padding:14px;
   background:var(--panel); border:1px solid var(--border); border-radius:12px;
@@ -930,7 +924,7 @@ button{ font-family:inherit; cursor:pointer; }
 .tie-display.hidden{ display:none !important; }
 
 /* ====================================================================
-   筹码堆
+   筹码堆（基础样式）
    ==================================================================== */
 .chip-stack-wrap{
   display:flex; flex-direction:row; align-items:flex-end;
@@ -1052,13 +1046,13 @@ body.is-mobile.orientation-portrait .seat[data-chip-side="bottom"] .chip-stack-w
 body.is-desktop .seat.me .chip-stack-wrap,
 body.is-mobile.orientation-portrait .seat.me .chip-stack-wrap{
   position:absolute !important;
-  left:50% !important;
-  right:auto !important;
-  top:calc(100% + 6px) !important;
+  top:50% !important;
   bottom:auto !important;
-  transform:translateX(-50%) !important;
-  z-index:20 !important;
+  left:calc(100% + 6px) !important;
+  right:auto !important;
+  transform:translateY(-50%) !important;
   margin:0 !important;
+  z-index:20 !important;
 }
 body.is-desktop .seat .chip-column,
 body.is-mobile.orientation-portrait .seat .chip-column{ width:16px; }
@@ -1091,7 +1085,6 @@ body.is-mobile.orientation-portrait .seat .chip-stack-wrap.empty{
 }
 .chat-fab.hidden{ display:none !important; }
 
-/* 聊天面板：默认完全隐藏，只有点 fab 才显示（.hidden 已被全局控制） */
 .chat-panel{
   position:fixed; right:16px; bottom:86px;
   width:300px; max-width:calc(100vw - 32px);
@@ -1115,7 +1108,6 @@ body.is-mobile.orientation-portrait .seat .chip-stack-wrap.empty{
   pointer-events:auto;
 }
 
-/* 关闭按钮：大点击区 + 强制可点 */
 .chat-close{
   pointer-events:auto !important;
   z-index:10 !important;
@@ -1146,7 +1138,6 @@ body.is-mobile.orientation-portrait .seat .chip-stack-wrap.empty{
 .chat-msg.self .chat-name{ color:#10b981; }
 .chat-msg .chat-text{ color:var(--text); word-break:break-word; }
 
-/* 快捷话术：固定 4 列，手机端也要显示 */
 .chat-quick{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -1184,7 +1175,6 @@ body.is-mobile.orientation-portrait .seat .chip-stack-wrap.empty{
   cursor:pointer;
 }
 
-/* 座位气泡 */
 .chat-bubble{
   position:absolute; left:50%; bottom:100%;
   transform:translate(-50%,-8px);
@@ -1311,7 +1301,6 @@ body.is-mobile .lang-select{
 body.is-mobile .status-pill{ padding:3px 7px; font-size:10px; }
 body.is-mobile .btn-wallet{ padding:5px 10px; font-size:11px; }
 
-/* 大厅紧凑 */
 body.is-mobile .lobby-container{ padding:10px; }
 body.is-mobile .mode-switch{ display:flex; width:100%; padding:3px; margin-bottom:12px; }
 body.is-mobile .mode-tab{ flex:1; padding:8px 4px; font-size:11px; justify-content:center; gap:4px; }
@@ -1344,7 +1333,6 @@ body.is-mobile .section-heading-row{
 }
 body.is-mobile .seats-picker{ width:100%; justify-content:space-between; }
 
-/* 数据页紧凑 */
 body.is-mobile .numbers-container{ padding:12px; }
 body.is-mobile .stats-hero{ grid-template-columns:repeat(2,1fr); gap:8px; }
 body.is-mobile .stat-big{ grid-column:span 2; padding:14px; }
@@ -1354,27 +1342,27 @@ body.is-mobile .session-row{
 }
 body.is-mobile .session-row > span:nth-child(n+5){ display:none; }
 
-/* 规则 */
 body.is-mobile .rules-container{ padding:16px 12px; }
 body.is-mobile .rule-grid{ grid-template-columns:1fr; gap:10px; }
 body.is-mobile .faq-item summary{ padding:12px 14px; font-size:12px; }
 body.is-mobile .faq-item p{ font-size:12px; padding:0 14px 12px; }
 
 /* ====================================================================
-   手机横屏：核心布局
+   ★★★ 手机横屏：最终布局（唯一一套）
    ==================================================================== */
 
-/* 隐藏顶部网页导航栏（进入游戏后） */
 body.is-mobile.orientation-landscape.game-active .topbar{ display:none !important; }
 
 body.is-mobile.orientation-landscape{
-  position:fixed; inset:0;
+  position:fixed;
+  top:0; left:0; right:0; bottom:0;
   width:100vw; height:100vh; height:100dvh;
   overflow:hidden; margin:0; padding:0;
 }
 
 body.is-mobile.orientation-landscape #gameScreen{
-  position:fixed; inset:0;
+  position:fixed;
+  top:0; left:0; right:0; bottom:0;
   width:100vw; height:100vh; height:100dvh;
   overflow:hidden;
   display:flex; flex-direction:column;
@@ -1382,12 +1370,13 @@ body.is-mobile.orientation-landscape #gameScreen{
 }
 
 body.is-mobile.orientation-landscape #gameScreen .game-topbar{
-  flex-shrink:0;
+  flex:0 0 auto;
   height:36px;
   padding:4px 8px; gap:6px;
   display:flex; align-items:center;
   background:#000;
   border-bottom:1px solid var(--border);
+  box-sizing:border-box;
 }
 body.is-mobile.orientation-landscape #gameScreen .btn-back{ padding:4px 8px; font-size:11px; }
 body.is-mobile.orientation-landscape #gameScreen .game-info{
@@ -1402,15 +1391,18 @@ body.is-mobile.orientation-landscape #gameScreen .stage-pill{
   font-size:10px; padding:2px 6px;
 }
 body.is-mobile.orientation-landscape #gameScreen #gameWalletPill{ display:none; }
-body.is-mobile.orientation-landscape #gameScreen .game-right{ margin-left:auto; gap:3px; display:flex; align-items:center; }
-body.is-mobile.orientation-landscape #gameScreen .btn-fullscreen{ padding:4px 8px; font-size:12px; }
+body.is-mobile.orientation-landscape #gameScreen .game-right{
+  margin-left:auto; gap:3px;
+  display:flex; align-items:center;
+}
+body.is-mobile.orientation-landscape #gameScreen .btn-fullscreen{
+  padding:4px 8px; font-size:12px;
+}
 body.is-mobile.orientation-landscape #gameScreen .btn-zoom{
   padding:3px 7px !important;
   font-size:12px !important;
   min-width:22px !important;
 }
-
-/* 返回大厅按钮红色警告 */
 body.is-mobile.orientation-landscape #gameScreen .btn-back{
   background:rgba(239,68,68,.15) !important;
   border-color:rgba(239,68,68,.7) !important;
@@ -1424,58 +1416,103 @@ body.is-mobile.orientation-landscape #gameScreen .btn-back:active{
 }
 
 body.is-mobile.orientation-landscape #gameScreen .game-layout{
-  display:flex; flex:1;
-  min-height:0;
-  width:100%; margin:0; padding:0;
-  gap:0; position:relative;
+  display:flex !important;
+  flex:1 1 0 !important;
+  min-height:0 !important;
+  min-width:0 !important;
+  width:100% !important;
+  height:auto !important;
+  margin:0 !important;
+  padding:0 !important;
+  gap:0 !important;
+  position:relative !important;
+  grid-template-columns:none !important;
+  grid-template-rows:none !important;
 }
 
-body.is-mobile.orientation-landscape #gameScreen .side-left{ display:none; }
+body.is-mobile.orientation-landscape #gameScreen .side-left{ display:none !important; }
 
 body.is-mobile.orientation-landscape #gameScreen .table-area{
-  flex:1; min-width:0;
-  position:relative;
-  display:flex; align-items:center; justify-content:center;
-  padding:26px 6px 34px;
-  overflow:hidden;
+  flex:1 1 0 !important;
+  min-width:0 !important;
+  min-height:0 !important;
+  width:auto !important;
+  height:auto !important;
+  position:relative !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  padding:42px 8px 8px 8px !important;
+  margin:0 !important;
+  overflow:visible !important;
+  box-sizing:border-box !important;
 }
 
 body.is-mobile.orientation-landscape #gameScreen .poker-table{
-  position:relative;
-  width:min(100%, calc((100vh - 96px) * 1.6));
-  width:min(100%, calc((100dvh - 96px) * 1.6));
-  aspect-ratio:16 / 10;
-  height:auto;
-  border-radius:50%;
-  margin:0;
-  border-width:6px;
-  border-color:#5a3a20 #2e1c0e #2e1c0e #5a3a20;
-  flex-shrink:0;
+  position:relative !important;
+  top:auto !important;
+  left:auto !important;
+  transform:none !important;
+  width:auto !important;
+  height:100% !important;
+  max-height:100% !important;
+  max-width:100% !important;
+  aspect-ratio:16 / 10 !important;
+  border-radius:50% !important;
+  border-width:6px !important;
+  border-color:#5a3a20 #2e1c0e #2e1c0e #5a3a20 !important;
+  margin:0 !important;
+  flex-shrink:0 !important;
+  overflow:visible !important;
 }
 
-body.is-mobile.orientation-landscape #gameScreen .dealer-seat{ top:2px; }
+body.is-mobile.orientation-landscape #gameScreen .dealer-seat{
+  position:absolute !important;
+  top:4px !important;
+  left:50% !important;
+  transform:translateX(-50%) !important;
+  z-index:6 !important;
+}
 body.is-mobile.orientation-landscape #gameScreen .dealer-avatar{
   width:30px; height:30px; font-size:15px;
 }
 body.is-mobile.orientation-landscape #gameScreen .dealer-name{ font-size:9px; }
 
+body.is-mobile.orientation-landscape #gameScreen .seats-layer{
+  position:absolute !important;
+  top:0 !important; left:0 !important;
+  right:0 !important; bottom:0 !important;
+  width:auto !important;
+  height:auto !important;
+  pointer-events:none !important;
+  overflow:visible !important;
+}
+
 /* 右侧操作栏 */
 body.is-mobile.orientation-landscape #gameScreen .side-right{
-  width:200px; min-width:180px; max-width:32vw;
-  flex-shrink:0;
-  padding:6px 8px; margin:0;
-  border-left:1px solid rgba(251,191,36,.35);
-  border-radius:0;
-  overflow-y:auto; overflow-x:hidden;
-  -webkit-overflow-scrolling:touch;
+  width:200px !important;
+  min-width:180px !important;
+  max-width:32vw !important;
+  flex:0 0 auto !important;
+  height:100% !important;
+  padding:6px 8px !important;
+  margin:0 !important;
+  border-left:1px solid rgba(251,191,36,.35) !important;
+  border-radius:0 !important;
+  overflow-y:auto !important;
+  overflow-x:hidden !important;
+  display:flex !important;
+  flex-direction:column !important;
+  gap:4px !important;
+  box-sizing:border-box !important;
+  -webkit-overflow-scrolling:touch !important;
   scrollbar-width:thin;
-  display:flex; flex-direction:column;
-  gap:4px;
 }
 body.is-mobile.orientation-landscape #gameScreen .side-right::-webkit-scrollbar{ width:4px; }
 body.is-mobile.orientation-landscape #gameScreen .side-right::-webkit-scrollbar-thumb{
   background:rgba(251,191,36,.5); border-radius:2px;
 }
+
 body.is-mobile.orientation-landscape #gameScreen .hand-panel-head{ font-size:10px; }
 body.is-mobile.orientation-landscape #gameScreen .hand-label{ font-size:10px; }
 body.is-mobile.orientation-landscape #gameScreen .hand-bem{ font-size:10px; }
@@ -1641,15 +1678,13 @@ body.is-mobile.orientation-landscape #gameScreen .seat[data-chip-side="bottom"] 
   left:50% !important; right:auto !important;
   transform:translate(-50%, 6px) !important;
 }
-body.is-mobile.orientation-landscape #gameScreen .seat.me .chip-stack-wrap,
-body.is-mobile.orientation-landscape #gameScreen .seat[data-chip-side="self"] .chip-stack-wrap,
-body.is-mobile.orientation-landscape #gameScreen .seat[data-pid="0"] .chip-stack-wrap{
+body.is-mobile.orientation-landscape #gameScreen .seat.me .chip-stack-wrap{
   position:absolute !important;
-  left:50% !important;
-  right:auto !important;
-  top:calc(100% + 4px) !important;
+  top:50% !important;
   bottom:auto !important;
-  transform:translateX(-50%) !important;
+  left:calc(100% + 6px) !important;
+  right:auto !important;
+  transform:translateY(-50%) !important;
   margin:0 !important;
   display:flex !important;
   z-index:12 !important;
@@ -1777,15 +1812,12 @@ body.is-mobile.orientation-landscape .chat-panel{
   overflow:hidden !important;
 }
 body.is-mobile.orientation-landscape .chat-panel.hidden{ display:none !important; }
-
-/* 手机横屏：聊天消息区可滚动 */
 body.is-mobile.orientation-landscape .chat-panel .chat-messages{
   flex:1 !important;
   min-height:60px !important;
   overflow-y:auto !important;
   -webkit-overflow-scrolling:touch !important;
 }
-/* ★ 快捷话术：手机端也要显示，固定在底部 */
 body.is-mobile.orientation-landscape .chat-panel .chat-quick{
   flex-shrink:0 !important;
   display:grid !important;
@@ -1817,12 +1849,9 @@ body.is-mobile.orientation-landscape .chat-panel .chat-input-row button{
   font-size:11px !important;
   padding:6px 12px !important;
 }
-
 body.is-mobile.orientation-landscape .ingame-history{
   width:60vw; max-height:70vh;
 }
-
-/* 手机横屏：主动秀牌高亮（尺寸紧凑） */
 body.is-mobile.orientation-landscape #gameScreen .seat.intent-reveal{
   box-shadow:
     0 0 18px rgba(59,130,246,.7),
@@ -1854,19 +1883,20 @@ body.is-fullscreen.is-mobile.orientation-landscape #gameScreen{
   height:100dvh;
 }
 
-/* ★ 缩放：JS 动态控制 #gameScreen 的 zoom 和尺寸 */
-#gameScreen {
-  zoom: var(--zoom-scale, 1);
-}
-body.zoom-active #gameScreen {
-  right: auto !important;
-  bottom: auto !important;
-  width: var(--zoom-w, 100vw);
-  height: var(--zoom-h, 100vh);
+/* ====================================================================
+   缩放：JS 内联控制 #gameScreen 的 zoom 和尺寸
+   ==================================================================== */
+body.zoom-active #gameScreen{
+  position:fixed !important;
+  top:0 !important;
+  left:0 !important;
+  right:auto !important;
+  bottom:auto !important;
+  transform-origin:top left !important;
 }
 
 /* ====================================================================
-   ★ 手机端对局记录按钮 + 面板
+   手机端对局记录按钮 + 面板
    ==================================================================== */
 .mobile-log-fab{
   position:fixed;
@@ -1928,133 +1958,3 @@ body.is-mobile.orientation-landscape #mobileLogArea{
 }
 body.is-desktop .mobile-log-fab,
 body.is-desktop .mobile-log-panel{ display:none !important; }
-
-/* ====================================================================
-   ★ 手机横屏：牌桌尺寸修复 + 筹码堆放座位下方
-   ==================================================================== */
-
-/* 1. 牌桌区域：上下留足空间 */
-body.is-mobile.orientation-landscape #gameScreen .table-area{
-  padding: 26px 6px 48px !important;
-  overflow: visible !important;
-}
-
-/* 2. 牌桌：用可用高度限制宽度，避免溢出 */
-body.is-mobile.orientation-landscape #gameScreen .poker-table{
-  width: min(80%, calc((100dvh - 120px) * 1.6)) !important;
-  width: min(80%, calc((100dvh - 120px) * 1.6)) !important;
-  max-width: 80% !important;
-  aspect-ratio: 16 / 10 !important;
-  height: auto !important;
-  flex-shrink: 0 !important;
-}
-
-/* 3. 自己座位的筹码堆：放座位正下方（贴近座位，不溢出） */
-body.is-mobile.orientation-landscape #gameScreen .seat.me .chip-stack-wrap,
-body.is-mobile.orientation-landscape #gameScreen .seat[data-chip-side="self"] .chip-stack-wrap,
-body.is-mobile.orientation-landscape #gameScreen .seat[data-pid="0"] .chip-stack-wrap{
-  position: absolute !important;
-  left: 50% !important;
-  right: auto !important;
-  top: calc(100% + 2px) !important;
-  bottom: auto !important;
-  transform: translateX(-50%) !important;
-  margin: 0 !important;
-  display: flex !important;
-  z-index: 12 !important;
-}
-
-/* 4. 自己的座位稍微往牌桌内缩一点（防止座位本身超出） */
-body.is-mobile.orientation-landscape #gameScreen .seats-layer{
-  padding-bottom: 20px !important;
-}
-/* ====================================================================
-   ★ 缩放修复：牌桌用父容器高度，而不是视口高度
-   ==================================================================== */
-
-/* 让 table-area 成为定位参考 */
-body.is-mobile.orientation-landscape #gameScreen .table-area{
-  position: relative !important;
-  display: block !important;
-  padding: 0 !important;
-  overflow: visible !important;
-}
-
-/* 牌桌：绝对定位居中，用父容器高度撑满（82%） */
-body.is-mobile.orientation-landscape #gameScreen .poker-table{
-  position: absolute !important;
-  top: 50% !important;
-  left: 50% !important;
-  transform: translate(-50%, -50%) !important;
-  height: 82% !important;
-  max-height: 82% !important;
-  max-width: 88% !important;
-  width: auto !important;
-  aspect-ratio: 16 / 10 !important;
-  flex-shrink: 0 !important;
-}
-
-/* 荷官固定在顶部 */
-body.is-mobile.orientation-landscape #gameScreen .dealer-seat{
-  position: absolute !important;
-  top: 4px !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  z-index: 6 !important;
-}
-
-/* seats-layer 覆盖 table-area 全部区域 */
-body.is-mobile.orientation-landscape #gameScreen .seats-layer{
-  position: absolute !important;
-  inset: 0 !important;
-  pointer-events: none !important;
-}
-
-/* 自己的筹码堆：座位正下方 2px */
-body.is-mobile.orientation-landscape #gameScreen .seat.me .chip-stack-wrap,
-body.is-mobile.orientation-landscape #gameScreen .seat[data-chip-side="self"] .chip-stack-wrap,
-body.is-mobile.orientation-landscape #gameScreen .seat[data-pid="0"] .chip-stack-wrap{
-  position: absolute !important;
-  left: 50% !important;
-  right: auto !important;
-  top: calc(100% + 2px) !important;
-  bottom: auto !important;
-  transform: translateX(-50%) !important;
-  margin: 0 !important;
-  display: flex !important;
-  z-index: 12 !important;
-}
-
-/* ====================================================================
-   ★ 自己的筹码堆：放到座位右侧（和其他玩家一致）
-   ==================================================================== */
-
-/* 移除之前的"下方"定位 */
-body.is-mobile.orientation-landscape #gameScreen .seat.me .chip-stack-wrap,
-body.is-mobile.orientation-landscape #gameScreen .seat[data-chip-side="self"] .chip-stack-wrap,
-body.is-mobile.orientation-landscape #gameScreen .seat[data-pid="0"] .chip-stack-wrap{
-  position: absolute !important;
-  top: 50% !important;
-  bottom: auto !important;
-  /* 座位右侧 6px，垂直居中 */
-  left: calc(100% + 6px) !important;
-  right: auto !important;
-  transform: translateY(-50%) !important;
-  margin: 0 !important;
-  display: flex !important;
-  z-index: 12 !important;
-}
-
-/* 桌面端 / 手机竖屏也同步改成右侧 */
-body.is-desktop .seat.me .chip-stack-wrap,
-body.is-mobile.orientation-portrait .seat.me .chip-stack-wrap{
-  position: absolute !important;
-  top: 50% !important;
-  bottom: auto !important;
-  left: calc(100% + 6px) !important;
-  right: auto !important;
-  transform: translateY(-50%) !important;
-  margin: 0 !important;
-  display: flex !important;
-  z-index: 12 !important;
-}
