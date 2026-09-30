@@ -2024,3 +2024,121 @@ body.is-mobile.orientation-landscape #gameScreen .seat.me .chip-stack-wrap{
   display: flex !important;
   z-index: 12 !important;
 }
+
+/* ====================================================================
+   ★★★ 手机横屏：牌桌布局（最终版，放在最末尾）
+   ==================================================================== */
+
+/* 主体：flex 左右分栏 */
+body.is-mobile.orientation-landscape #gameScreen .game-layout{
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: stretch !important;
+  flex: 1 1 0 !important;
+  min-height: 0 !important;
+  min-width: 0 !important;
+  width: 100% !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  gap: 0 !important;
+  grid-template-columns: none !important;
+  grid-template-rows: none !important;
+  position: relative !important;
+}
+
+/* 左侧隐藏 */
+body.is-mobile.orientation-landscape #gameScreen .side-left{
+  display: none !important;
+}
+
+/* 牌桌区：flex 居中 */
+body.is-mobile.orientation-landscape #gameScreen .table-area{
+  flex: 1 1 0 !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 26px 6px 34px 6px !important;
+  margin: 0 !important;
+  overflow: visible !important;
+  box-sizing: border-box !important;
+}
+
+/* 牌桌：高度铺满 table-area，宽度按 16:10 自动 */
+body.is-mobile.orientation-landscape #gameScreen .poker-table{
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  transform: none !important;
+  width: auto !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  aspect-ratio: 16 / 10 !important;
+  border-radius: 50% !important;
+  border-width: 6px !important;
+  border-color: #5a3a20 #2e1c0e #2e1c0e #5a3a20 !important;
+  margin: 0 !important;
+  flex-shrink: 0 !important;
+  overflow: visible !important;
+}
+
+/* 荷官固定顶部 */
+body.is-mobile.orientation-landscape #gameScreen .dealer-seat{
+  position: absolute !important;
+  top: 4px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 6 !important;
+}
+
+/* 座位层铺满牌桌 */
+body.is-mobile.orientation-landscape #gameScreen .seats-layer{
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  pointer-events: none !important;
+  overflow: visible !important;
+}
+
+/* 右栏：不要吃掉太多宽度 */
+body.is-mobile.orientation-landscape #gameScreen .side-right{
+  width: min(180px, 26vw) !important;
+  min-width: 140px !important;
+  max-width: 180px !important;
+  flex: 0 0 auto !important;
+  height: auto !important;
+  padding: 6px 8px !important;
+  margin: 0 !important;
+  border-left: 1px solid rgba(251,191,36,.35) !important;
+  border-radius: 0 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+  box-sizing: border-box !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+/* 自己座位筹码堆：放座位右侧（紧凑） */
+body.is-mobile.orientation-landscape #gameScreen .seat.me .chip-stack-wrap{
+  position: absolute !important;
+  top: 50% !important;
+  bottom: auto !important;
+  left: calc(100% + 4px) !important;
+  right: auto !important;
+  transform: translateY(-50%) !important;
+  margin: 0 !important;
+  display: flex !important;
+  z-index: 12 !important;
+}
