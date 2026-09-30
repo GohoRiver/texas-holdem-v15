@@ -2024,3 +2024,37 @@ body.is-mobile.orientation-landscape #gameScreen .seat[data-pid="0"] .chip-stack
   display: flex !important;
   z-index: 12 !important;
 }
+
+/* ====================================================================
+   ★ 自己的筹码堆：放到座位右侧（和其他玩家一致）
+   ==================================================================== */
+
+/* 移除之前的"下方"定位 */
+body.is-mobile.orientation-landscape #gameScreen .seat.me .chip-stack-wrap,
+body.is-mobile.orientation-landscape #gameScreen .seat[data-chip-side="self"] .chip-stack-wrap,
+body.is-mobile.orientation-landscape #gameScreen .seat[data-pid="0"] .chip-stack-wrap{
+  position: absolute !important;
+  top: 50% !important;
+  bottom: auto !important;
+  /* 座位右侧 6px，垂直居中 */
+  left: calc(100% + 6px) !important;
+  right: auto !important;
+  transform: translateY(-50%) !important;
+  margin: 0 !important;
+  display: flex !important;
+  z-index: 12 !important;
+}
+
+/* 桌面端 / 手机竖屏也同步改成右侧 */
+body.is-desktop .seat.me .chip-stack-wrap,
+body.is-mobile.orientation-portrait .seat.me .chip-stack-wrap{
+  position: absolute !important;
+  top: 50% !important;
+  bottom: auto !important;
+  left: calc(100% + 6px) !important;
+  right: auto !important;
+  transform: translateY(-50%) !important;
+  margin: 0 !important;
+  display: flex !important;
+  z-index: 12 !important;
+}
