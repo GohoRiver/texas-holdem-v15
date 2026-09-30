@@ -1968,3 +1968,59 @@ body.is-mobile.orientation-landscape #gameScreen .seat[data-pid="0"] .chip-stack
 body.is-mobile.orientation-landscape #gameScreen .seats-layer{
   padding-bottom: 20px !important;
 }
+/* ====================================================================
+   ★ 缩放修复：牌桌用父容器高度，而不是视口高度
+   ==================================================================== */
+
+/* 让 table-area 成为定位参考 */
+body.is-mobile.orientation-landscape #gameScreen .table-area{
+  position: relative !important;
+  display: block !important;
+  padding: 0 !important;
+  overflow: visible !important;
+}
+
+/* 牌桌：绝对定位居中，用父容器高度撑满（82%） */
+body.is-mobile.orientation-landscape #gameScreen .poker-table{
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  height: 82% !important;
+  max-height: 82% !important;
+  max-width: 88% !important;
+  width: auto !important;
+  aspect-ratio: 16 / 10 !important;
+  flex-shrink: 0 !important;
+}
+
+/* 荷官固定在顶部 */
+body.is-mobile.orientation-landscape #gameScreen .dealer-seat{
+  position: absolute !important;
+  top: 4px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 6 !important;
+}
+
+/* seats-layer 覆盖 table-area 全部区域 */
+body.is-mobile.orientation-landscape #gameScreen .seats-layer{
+  position: absolute !important;
+  inset: 0 !important;
+  pointer-events: none !important;
+}
+
+/* 自己的筹码堆：座位正下方 2px */
+body.is-mobile.orientation-landscape #gameScreen .seat.me .chip-stack-wrap,
+body.is-mobile.orientation-landscape #gameScreen .seat[data-chip-side="self"] .chip-stack-wrap,
+body.is-mobile.orientation-landscape #gameScreen .seat[data-pid="0"] .chip-stack-wrap{
+  position: absolute !important;
+  left: 50% !important;
+  right: auto !important;
+  top: calc(100% + 2px) !important;
+  bottom: auto !important;
+  transform: translateX(-50%) !important;
+  margin: 0 !important;
+  display: flex !important;
+  z-index: 12 !important;
+}
