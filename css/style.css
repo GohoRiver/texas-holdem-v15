@@ -1928,3 +1928,43 @@ body.is-mobile.orientation-landscape #mobileLogArea{
 }
 body.is-desktop .mobile-log-fab,
 body.is-desktop .mobile-log-panel{ display:none !important; }
+
+/* ====================================================================
+   ★ 手机横屏：牌桌尺寸修复 + 筹码堆放座位下方
+   ==================================================================== */
+
+/* 1. 牌桌区域：上下留足空间 */
+body.is-mobile.orientation-landscape #gameScreen .table-area{
+  padding: 26px 6px 48px !important;
+  overflow: visible !important;
+}
+
+/* 2. 牌桌：用可用高度限制宽度，避免溢出 */
+body.is-mobile.orientation-landscape #gameScreen .poker-table{
+  width: min(80%, calc((100dvh - 120px) * 1.6)) !important;
+  width: min(80%, calc((100dvh - 120px) * 1.6)) !important;
+  max-width: 80% !important;
+  aspect-ratio: 16 / 10 !important;
+  height: auto !important;
+  flex-shrink: 0 !important;
+}
+
+/* 3. 自己座位的筹码堆：放座位正下方（贴近座位，不溢出） */
+body.is-mobile.orientation-landscape #gameScreen .seat.me .chip-stack-wrap,
+body.is-mobile.orientation-landscape #gameScreen .seat[data-chip-side="self"] .chip-stack-wrap,
+body.is-mobile.orientation-landscape #gameScreen .seat[data-pid="0"] .chip-stack-wrap{
+  position: absolute !important;
+  left: 50% !important;
+  right: auto !important;
+  top: calc(100% + 2px) !important;
+  bottom: auto !important;
+  transform: translateX(-50%) !important;
+  margin: 0 !important;
+  display: flex !important;
+  z-index: 12 !important;
+}
+
+/* 4. 自己的座位稍微往牌桌内缩一点（防止座位本身超出） */
+body.is-mobile.orientation-landscape #gameScreen .seats-layer{
+  padding-bottom: 20px !important;
+}
