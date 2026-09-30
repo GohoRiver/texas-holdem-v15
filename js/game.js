@@ -3442,22 +3442,21 @@ document.addEventListener("DOMContentLoaded", function(){
   if(_zoomLevel > 110) _zoomLevel = 110;
 
   function applyZoom(){
-    const scale = _zoomLevel / 100;
-    const gs = document.getElementById('gameScreen');
-    if(!gs) return;
-    /* 用内联样式直接控制，优先级最高 */
-    gs.style.zoom = String(scale);
-    if(scale === 1){
-      gs.style.width = '';
-      gs.style.height = '';
-      document.body.classList.remove('zoom-active');
-    } else {
-      gs.style.width = (100 / scale) + 'vw';
-      gs.style.height = (100 / scale) + 'dvh';
-      document.body.classList.add('zoom-active');
-    }
-    try { localStorage.setItem('neon_holdem_zoom', String(_zoomLevel)); } catch(e){}
+  const scale = _zoomLevel / 100;
+  const gs = document.getElementById('gameScreen');
+  if(!gs) return;
+  gs.style.zoom = String(scale);
+  if(scale === 1){
+    gs.style.width = '';
+    gs.style.height = '';
+    document.body.classList.remove('zoom-active');
+  } else {
+    gs.style.width = (100 / scale) + 'vw';
+    gs.style.height = (100 / scale) + 'dvh';
+    document.body.classList.add('zoom-active');
   }
+  try { localStorage.setItem('neon_holdem_zoom', String(_zoomLevel)); } catch(e){}
+}
   applyZoom();
 
   const zOut = $("zoomOutBtn");
